@@ -19,12 +19,14 @@ const types = [
 ];
 
 function createbtn() {
+  const scrollTrack = document.querySelector(".type-scroll");
   types.forEach(type => {
     const nbtn = document.createElement("button");
     nbtn.textContent = type;
     nbtn.onclick = () => filterbytype(type);
-    typefiltered.appendChild(nbtn);
+    scrollTrack.appendChild(nbtn);
   });
+
 }
 
 
@@ -67,18 +69,29 @@ function loadingpokemon(selected){
     container.innerHTML = '';
     const startingrange = (currentpage - 1) * perpage;
     const numberp = selected.slice(startingrange, startingrange + perpage);
-    count.textContent = `Showing: ${selected.length} Pokémon`;
+    // count.textContent = `Showing: ${selected.length} Pokémon`;
 
     numberp.forEach(p => {
         const card = document.createElement('div');
         card.className = 'card'; 
 
         const typeText = p.types.map(t => t.type.name).join("   , ");
+        
         card.innerHTML = `
-            <img src="${p.sprites.front_default}" alt="${p.name}" width="100" height="100" style="margin:auto;">
-            <p class="heading">${p.name}</p>
-            <p class="potype">${typeText}</p>
-        `;
+  <div class="card-inner" >
+    <div class="card-front">
+      <img src="${p.sprites.front_default}" alt="${p.name}">
+      <p class="heading">${p.name}</p>
+      <p class="potype">${typeText}</p>
+    </div>
+    <div class="card-back">
+      <p><strong>Height:</strong> ${p.height / 10} m</p>
+      <p><strong>Weight:</strong> ${p.weight / 10} kg</p>
+      <p><strong>XP:</strong> ${p.base_experience}</p>
+    </div>
+  </div>
+`;
+
         card.addEventListener('click', () => {
         showPokemonDetail(p.name);
         });
@@ -133,35 +146,7 @@ nextbtn.addEventListener('click', () => {
   }
 });
 
-const modal = document.querySelector(".modal");
-const modalContent = document.querySelector("#modal-data");
-const closeBtn = document.querySelector(".close-btn");
 
-closeBtn.addEventListener("click", () => {
-  modal.classList.add("hidden");
-  modalContent.innerHTML = '';
-});
-
-async function showPokemonDetail(name) {
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-  const data = await res.json();
-
-  const abilities = data.abilities.map(a => a.ability.name).join(", ");
-  const types = data.types.map(t => t.type.name).join(", ");
-
-  modalContent.innerHTML = `
-    <h2 class="jagan">${data.name}</h2>
-    <img src="${data.sprites.other["official-artwork"].front_default}" alt="${data.name}">
-    <p style="color:##626f47"><strong style="color:#ab886d">Types:</strong> ${types}</p>
-    <p style="color:##626f47"><strong style="color:#ab886d">Abilities:</strong> ${abilities}</p>
-    <p style="color:##626f47"><strong style="color:#ab886d">Height:</strong> ${data.height / 10} m</p>
-    <p style="color:##626f47"><strong style="color:#ab886d">Weight:</strong> ${data.weight / 10} kg</p>
-   
-    </div>
-  `;
-
-  modal.classList.remove("hidden");
-}
 
 // Select the anchor inside .home without changing layout
 const homeLink = document.querySelector(".home a");
@@ -181,3 +166,6 @@ homeLink.addEventListener("click", function (e) {
 
 createbtn();
 loadpoki();
+
+
+
