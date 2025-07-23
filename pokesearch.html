@@ -17,15 +17,23 @@
 
     <div class="contentpart">
         <div class="searchbar">
-            <h1 class="count">Showing : 0 Pokemon</h1>
-            <input type="text" id="search" placeholder="Search Your Favourite....">
+            <input type="text" id="search" placeholder="Search Your Favourite...."autocomplete="off">
             <ul class="suggestion"></ul>
-    
-        </div>
+    </div>
 
-        <nav id="type-filters">
-           <button onclick="filterbytype('all')">All</button>
-        </nav>
+       <nav id="type-filters">
+            <div class="fixed-all-button">
+                <button onclick="filterbytype('all')">All</button>
+            </div>
+
+            <div class="scroll-wrapper">
+                <div class="type-scroll">
+                    
+                </div>
+            </div>
+      </nav>
+
+
 
         <div class="home">
              <a href="home.html" class="nav-link" target="_blank">
@@ -43,12 +51,7 @@
 
         <div class="pok-container"></div>
         
-        <div class="modal hidden">
-           <div class="modal-content">
-           <span class="close-btn">&times;</span>
-           <div id="modal-data"></div>
-         </div>
-        </div>
+        
 
 
          <div class="controlpage">

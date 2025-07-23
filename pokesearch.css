@@ -26,18 +26,15 @@
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
-
 .home a {
   text-decoration: none;
   color: white;           
   display: flex;
   align-items: center;
 }
-
 .home:hover {
-  background-color: #6a4e84;
+  background-color: #3f314d;
 }
-
 .head{
     height: 4rem;
     width: 100%;
@@ -57,9 +54,8 @@
              blink 0.7s step-end infinite;
   font-size: 2rem;
   font-family: monospace;
-  color: crimson;
+  color: rgb(2, 133, 248);
 }
-
 @keyframes typing {
   from {
     width: 0;
@@ -68,8 +64,6 @@
     width: 18ch;
   }
 }
-
-
 h3{
     margin-right: 0.9rem;
     color: red;
@@ -80,23 +74,6 @@ h3{
     background-image: url("logopokemon.png");
     background-size: contain;
     background-repeat: no-repeat;
-}
-h1{
-    font-size: xx-large;
-    font-family:Arial, Helvetica, sans-serif;
-    animation: bounce 1s ease-in-out infinite;
-    position: relative;
-    color: rgb(58, 58, 221);
-}
-
-@keyframes bounce {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
-}
-
-.jagan{
-    animation: bounce 1s ease-in-out infinite;
 }
 
 #search{
@@ -110,18 +87,8 @@ h1{
     font-size: x-large;
     padding-left: 1rem;
     border: 2px solid black;
-    margin-bottom: 2rem;
 }
 
-.count{
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: large;
-    padding-top:1rem ;
-    padding-bottom:0.2rem ;
-    color: red;
-    
-}
 .prevbtn{
     height:2rem ;
     width: 5rem;
@@ -144,8 +111,7 @@ h1{
     font-weight: bold;
 }
 
-#type-filters button{
-    
+#type-filters button{ 
   margin-left: 1rem;
     margin-bottom: 0.5rem;
  padding: 5px 25px;
@@ -188,16 +154,13 @@ h1{
 #type-filters{
     margin-bottom: 2rem;
 }
-
-
 .suggestion li{
-
     backdrop-filter: blur(8px);
     background:rgba(255, 255, 255, 0.3) ;
     color: blue;
     border-radius: 0.5rem;
     height: 2rem;
-    margin: 4px;
+    margin-top: 4px;
     text-align: center;
     list-style: none;
     font-weight: 700;
@@ -209,15 +172,11 @@ h1{
     z-index: 10;
     width:20rem ;
 }
-
-
-
 .suggestion li:hover{
     background-color: blue;
     color: white;
     transform: scale3d(1.06, 1.06, 1);
 }
-
 .pok-container{
     display: flex;
     justify-content: center;
@@ -227,39 +186,26 @@ h1{
 }
 
 .pok-container img:hover{
-    /* transform: scale(1.3); */
     transform: scale3d(1.4, 1.4, 1.4);
 }
 .pok-container img {
     transition: transform 0.3s ease;
 }
 
-
-.card {
- width: 190px;
- height: 254px;
- border-radius: 50px;
- /* background: #b2183a; */
- background: linear-gradient(135deg,#b2183a,#b15768,#fe546f,#e0affe);
- box-shadow: 1px 1px 1px #fbb3c8,
-               -1px -1px 10px #fbb3c8;
- text-align: center;  
-  transition: all 0.3s ease;            
-}
 .pok-container:has(.card:hover) .card:not(:hover){
     filter:grayscale(1) brightness(0.6);
     transform:scale(0.95);
     transition: all 0.3s ease;
-}
+} 
 .heading{
-    color: #391b49;
+    color: #f707ef;
     font-weight:bolder;
     font-size: large;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: capitalize;
 }
 .potype{
-    color:#8e05ea;
+    color:#20ea05;
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
     font-weight: 900;
@@ -274,7 +220,7 @@ h1{
     margin-bottom: 3rem;
 }
 .pageinfo{
-    color: red;
+    color: rgb(233, 5, 5);
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     font-weight: bold;
@@ -284,78 +230,6 @@ h1{
     backdrop-filter: blur(10px);
     background: none;
 }
-
-.modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-   height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  transition: opacity 0.3s ease;
-}
-
-.modal-content {
-    display: flex;
-    justify-content: center;
-  background: linear-gradient(45deg,#6fe6fc,#fefbc7,#6fe6fc,#fefbc7);
-  border-radius: 1rem;
-  padding: 2rem;
-  width: 95%;
-  max-width: 600px;
-  animation: slideUp 0.4s ease;
-  position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
-  color: #004030;
-  font-size: larger;
-  font-weight: 700;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-style: oblique;
-}
-
-@keyframes slideUp {
-  from { transform: translateY(40px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-.deb{
-    color: color-mix(in srgb,pink 50%,red 50%);
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: red;
-}
-
-.hidden {
-  display: none;
-}
-
-#modal-data h2 {
-  text-transform: capitalize;
-  color: #391b49;
-}
-
-#modal-data img {
-  display: block;
-  margin: 1rem auto;
-  height: 100px;
-}
-
-#modal-data ul {
-  padding-left: 1.2rem;
-}
-
-
-
-
 .loader-screen {
   position: fixed;
   top: 0;
@@ -368,12 +242,87 @@ h1{
   justify-content: center;
   z-index: 9999;
 }
-
 .loader-img {
   width: 150px;
   height: auto;
 }
-
 .hidden {
   display: none !important;
+}
+.fixed-all-button{
+  margin-left: -1rem;
+}
+ @keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.card {
+  animation: fadeIn 0.4s ease-in;
+}
+ .scroll-wrapper{
+    width:95vw;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: relative;
+    overflow: hidden; 
+ }
+ .type-scroll{
+  width: fit-content;
+  display: flex;
+  gap: 1rem;
+  animation: loop 15s linear infinite;
+ }
+@keyframes loop {
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(-50%);
+  }
+}
+.card {
+  width: 190px;
+  height: 254px;
+  perspective: 1000px;
+  border-radius: 1rem;
+}
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-front {
+  /* background: linear-gradient(135deg, #b2183a, #b15768, #fe546f, #e0affe); */
+  color: white;
+  background-image: url("card\ back.avif");
+  background-size: cover;
+  backdrop-filter: blur(2px);
+}
+.card-back {
+  /* background: linear-gradient(135deg,#b2183a, #b15768, #fe546f, #e0affe); */
+  color: #ffffff;
+  transform: rotateY(180deg);
+  background-image: url("card\ back.avif");
+  background-size: cover;
+  
+}
+.card-back p{
+  margin: 1rem;
+  font-weight: bolder;
+  font-size: large;
+}
+.card:hover .card-inner {
+  transform: rotateY(180deg);
 }
