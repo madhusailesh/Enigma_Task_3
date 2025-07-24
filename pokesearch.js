@@ -82,7 +82,7 @@ function loadingpokemon(selected){
     <div class="card-front">
       <img src="${p.sprites.front_default}" alt="${p.name}">
       <p class="heading">${p.name}</p>
-      <p class="potype">${typeText}</p>
+      <p class="potype" style="text-transform: capitalize;">${typeText}</p>
     </div>
     <div class="card-back">
       <p><strong>Height:</strong> ${p.height / 10} m</p>
