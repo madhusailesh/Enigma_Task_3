@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Pokémon</title>
+  <!-- Heroicons -->
+  <script src="https://unpkg.com/@heroicons/vue@2.0.16/24/outline/index.umd.js"></script>
+  <link rel="stylesheet" href="font.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bangers&family=Barrio&family=Bebas+Neue&family=Exile&family=Grechen+Fuemen&family=Lavishly+Yours&family=Monsieur+La+Doulaise&family=Rubik+Dirt&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png"
+    href="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" />
+</head>
+
+<body class="bg-yellow-50 text-gray-800">
+  <video autoplay muted loop playsinline class="fixed inset-0 w-full h-full object-cover z-[-1] blur-sm">
+    <source src="video/Pokémon TCG_ Sun & Moon—Unbroken Bonds, Available Now! (online-video-cutter.com).mp4"
+      type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <!-- Navbar -->
+  <nav class="bg-yellow-300 shadow-md fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu"
+            class="h-8 w-8" />
+          <span class="font-bold text-lg text-red-600">PokéWorld</span>
+        </div>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <a href="#" class="hover:text-red-600 flex items-center gap-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 12h18"></path>
+            </svg>
+            Home
+          </a>
+          <a href="#" class="hover:text-red-600 flex items-center gap-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 4h16v16H4z"></path>
+            </svg>
+            Pokédex
+          </a>
+          <a href="#" class="hover:text-red-600 flex items-center gap-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 8v4l3 3"></path>
+            </svg>
+            Battle
+          </a>
+          <a href="#" class="hover:text-red-600 flex items-center gap-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M13 16h-1v-4h-1"></path>
+            </svg>
+            About
+          </a>
+        </div>
+
+        <!-- Mobile Button -->
+        <div class="md:hidden">
+          <button id="menu-button" class="relative w-8 h-8 flex flex-col justify-center items-center">
+            <span class="bg-red-600 w-6 h-0.5 mb-1 rounded transition-transform origin-center" id="line1"></span>
+            <span class="bg-red-600 w-6 h-0.5 mb-1 rounded transition-transform origin-center" id="line2"></span>
+            <span class="bg-red-600 w-6 h-0.5 rounded transition-transform origin-center" id="line3"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="fixed top-16 left-0 w-full max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-yellow-200 backdrop-blur-md z-40 flex-col space-y-2 px-4 pt-0 pb-0 text-sm font-medium md:hidden">
+      <a href="index.html" class="block py-2 hover:text-red-600">Home</a>
+      <a href="pokedex.html" class="block py-2 hover:text-red-600">Pokédex Search</a>
+      <a href="pokesearch.html" class="block py-2 hover:text-red-600">pokesearch</a>
+      <a href="battle.html" class="block py-2 hover:text-red-600">battle</a>
+      <a href="quiz.html" class="block py-2 hover:text-red-600">quiz game</a>
+    </div>
+  </nav>
+
+  <!-- content  -->
+
+  <div class="content-overlay min-h-screen flex items-center">
+    <div class="container mx-auto px-4 py-20 text-center">
+      <h1 class="rubik-dirt-regular text-4xl md:text-6xl font-bold mb-6 text-yellow-300 drop-shadow-lg">
+        EXPLORE THE <span class="text-red-500">POKÉMON</span> UNIVERSE
+      </h1>
+      <div class="grechen-fuemen-regular text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-bold leading-snug">
+        <span class="block animated-line"></span>
+        <span class="real-fire">Discover</span> <span class="real-fire">all</span> <span class="real-fire">your</span>
+        <span class="real-fire">favorite</span> <span class="real-fire">Pokémon</span> <span
+          class="real-fire">characters,</span>
+        </span>
+        <span class="block animated-line">
+          <span class="real-fire">games,</span> <span class="real-fire">and</span> <span
+            class="real-fire">adventures</span>
+        </span>
+        <span class="block animated-line">
+          <span class="real-fire">in</span> <span class="real-fire">one</span> <span class="real-fire">place!</span>
+        </span>
+      </div>
+      <style>
+        @keyframes fade-in-up {
+          0% {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95) skewY(4deg);
+          }
+
+          60% {
+            opacity: 1;
+            transform: translateY(-6px) scale(1.03) skewY(-2deg);
+          }
+
+          80% {
+            opacity: 1;
+            transform: translateY(2px) scale(0.98) skewY(1deg);
+          }
+
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1) skewY(0);
+          }
+        }
+
+        .animated-line {
+          opacity: 0;
+          animation: fade-in-up 1s cubic-bezier(.4, 0, .2, 1) forwards;
+          animation-fill-mode: both;
+          display: block;
+          filter: drop-shadow(0 2px 6px #fbbf24);
+        }
+
+        .animated-line:nth-child(1) {
+          animation-delay: 0.1s;
+        }
+
+        .animated-line:nth-child(2) {
+          animation-delay: 0.7s;
+        }
+
+        .animated-line:nth-child(3) {
+          animation-delay: 1.3s;
+        }
+
+        .real-fire {
+          position: relative;
+          display: inline-block;
+          color: #fffbe6;
+          font-weight: bold;
+          letter-spacing: 1px;
+          padding: 0 2px;
+          text-shadow:
+            0 0 8px #ff9800,
+            0 0 16px #ff5722,
+            0 0 24px #ffd700,
+            0 0 32px #ff9800;
+          animation: fire-flicker 1.2s infinite alternate;
+        }
+
+        .real-fire::before,
+        .real-fire::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 0;
+          width: 110%;
+          height: 60%;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .real-fire::before {
+          background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.7) 0%, rgba(255, 0, 0, 0.2) 80%, transparent 100%);
+          filter: blur(6px);
+          opacity: 0.7;
+          animation: fire-blaze 0.7s infinite alternate;
+        }
+
+        .real-fire::after {
+          background: radial-gradient(ellipse at center, rgba(255, 255, 0, 0.5) 0%, rgba(255, 140, 0, 0.2) 70%, transparent 100%);
+          filter: blur(10px);
+          opacity: 0.5;
+          animation: fire-blaze 1.1s infinite alternate-reverse;
+        }
+
+        @keyframes fire-flicker {
+          0% {
+            text-shadow: 0 0 8px #ff9800, 0 0 16px #ff5722, 0 0 24px #ffd700, 0 0 32px #ff9800;
+            transform: scaleY(1);
+          }
+
+          30% {
+            text-shadow: 0 0 12px #ff9800, 0 0 20px #ff5722, 0 0 28px #ffd700, 0 0 36px #ff9800;
+            transform: scaleY(1.05);
+          }
+
+          60% {
+            text-shadow: 0 0 10px #ff9800, 0 0 18px #ff5722, 0 0 26px #ffd700, 0 0 34px #ff9800;
+            transform: scaleY(0.98);
+          }
+
+          100% {
+            text-shadow: 0 0 8px #ff9800, 0 0 16px #ff5722, 0 0 24px #ffd700, 0 0 32px #ff9800;
+            transform: scaleY(1);
+          }
+        }
+
+        @keyframes fire-blaze {
+          0% {
+            opacity: 0.7;
+            transform: scaleY(1);
+          }
+
+          50% {
+            opacity: 1;
+            transform: scaleY(1.1);
+          }
+
+          100% {
+            opacity: 0.7;
+            transform: scaleY(1);
+          }
+        }
+      </style>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button
+          class="pokemon-btn bg-transparent text-yellow-400 font-bold py-1 px-3 rounded-full text-xs transition-all duration-300 flex items-center gap-2">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+            alt="Poké Ball" class="h-4 w-4 animate-spin-slow" />
+          Pokédex search
+        </button>
+        <button onclick="playVideo()"
+          class="pokemon-btn bg-transparent text-blue-400 font-bold py-1 px-3 rounded-full text-xs transition-all duration-300 flex items-center gap-2">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png"
+            alt="Great Ball" class="h-4 w-4 animate-bounce" />
+          Watch A Episodes
+        </button>
+        <style>
+          .pokemon-btn {
+            border: 2px solid #ffcb05;
+            box-shadow:
+              0 0 8px #3b4cca,
+              0 0 16px #ffcb05,
+              0 0 0 2px #fff inset;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(90deg, rgba(255, 203, 5, 0.10) 0%, rgba(59, 76, 202, 0.08) 100%);
+            transition: box-shadow 0.3s, transform 0.2s;
+            animation: poke-glow 1.2s infinite alternate;
+            letter-spacing: 1px;
+            text-shadow: 0 0 4px #ffcb05, 0 0 8px #3b4cca;
+          }
+
+          .pokemon-btn::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255, 203, 5, 0.18) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 1;
+            animation: poke-pulse 1.5s infinite alternate;
+          }
+
+          .pokemon-btn::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(135deg,
+                rgba(255, 203, 5, 0.12) 0px,
+                rgba(59, 76, 202, 0.12) 8px,
+                transparent 16px,
+                transparent 24px);
+            border-radius: 9999px;
+            z-index: 0;
+            pointer-events: none;
+            animation: poke-stripes 2s linear infinite;
+          }
+
+          @keyframes poke-glow {
+            0% {
+              box-shadow: 0 0 8px #3b4cca, 0 0 16px #ffcb05, 0 0 0 2px #fff inset;
+            }
+
+            50% {
+              box-shadow: 0 0 16px #3b4cca, 0 0 32px #ffcb05, 0 0 0 2px #fff inset;
+            }
+
+            100% {
+              box-shadow: 0 0 8px #3b4cca, 0 0 16px #ffcb05, 0 0 0 2px #fff inset;
+            }
+          }
+
+          @keyframes poke-pulse {
+            0% {
+              opacity: 0.7;
+              transform: scale(1);
+            }
+
+            50% {
+              opacity: 1;
+              transform: scale(1.08);
+            }
+
+            100% {
+              opacity: 0.7;
+              transform: scale(1);
+            }
+          }
+
+          @keyframes poke-stripes {
+            0% {
+              background-position: 0 0;
+            }
+
+            100% {
+              background-position: 48px 48px;
+            }
+          }
+
+          .pokemon-btn:hover {
+            box-shadow: 0 0 16px #3b4cca, 0 0 32px #ffcb05, 0 0 0 2px #fff inset;
+            transform: scale(1.12) rotate(-2deg);
+            background: linear-gradient(90deg, rgba(255, 203, 5, 0.22) 0%, rgba(59, 76, 202, 0.18) 100%);
+            filter: brightness(1.2) saturate(1.5);
+          }
+
+          @keyframes spin-slow {
+            0% {
+              transform: rotate(0deg);
+            }
+
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+
+          .animate-spin-slow {
+            animation: spin-slow 2.5s linear infinite;
+          }
+        </style>
+      </div>
+
+
+
+      <!-- a video container -->
+
+
+
+      <div class="flex justify-center mt-10">
+        <div id="videoContainer"
+          class="hidden w-full max-w-xl aspect-video shadow-xl rounded-lg overflow-hidden relative">
+
+          <button id="closeVideoBtn" onclick="closeVideo()"
+            class="absolute top-2 right-2 z-10 bg-white bg-opacity-80 hover:bg-red-500 hover:text-white text-gray-700 rounded-full p-1 shadow transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <iframe id="ytVideo" class="w-full h-full" src="" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-10">
+        <!-- Pikachu -->
+        <img onclick="playCry('pikachu')"
+          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/51d76952-ea3d-4152-bdaa-f82596b8e24d.png"
+          alt="Pikachu"
+          class="rounded-full border-4 border-yellow-400 hover:border-red-600 transition cursor-pointer" />
+        <!-- Charizard -->
+        <img onclick="playCry('charizard')"
+          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c4576d0d-040a-4e82-ae48-8f385e8a079b.png"
+          alt="Charizard"
+          class="rounded-full border-4 border-yellow-400 hover:border-red-600 transition cursor-pointer" />
+        <!-- Bulbasaur -->
+        <img onclick="playCry('bulbasaur')"
+          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/955f6fbf-944c-42ca-bfeb-d98adbd275ba.png"
+          alt="Bulbasaur"
+          class="rounded-full border-4 border-yellow-400 hover:border-red-600 transition cursor-pointer" />
+        <!-- Squirtle -->
+        <img onclick="playCry('squirtle')"
+          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8f8b8fa5-c59b-478e-8963-e939f86f904e.png"
+          alt="Squirtle"
+          class="rounded-full border-4 border-yellow-400 hover:border-red-600 transition cursor-pointer" />
+        <!-- Mewtwo -->
+        <img onclick="playCry('mewtwo')"
+          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1a7ea02b-b747-4d0c-b6f1-cfbe3c6f715f.png"
+          alt="Mewtwo" class="rounded-full border-4 border-yellow-400 hover:border-red-600 transition cursor-pointer" />
+        <!-- Eevee -->
+        <img onclick="playCry('eevee')"
+          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/82ee83f7-9a1f-4655-a628-e0d471989144.png"
+          alt="Eevee" class="rounded-full border-4 border-yellow-400 hover:border-red-600 transition cursor-pointer" />
+      </div>
+    </div>
+  </div>
+</body>
+
+<footer class="bg-gradient-to-t from-gray-900 via-black to-transparent text-white relative overflow-hidden mt-20">
+  <!-- Background accent -->
+  <div class="absolute inset-0 bg-[url('/images/pokemon-bg-footer.jpg')] bg-cover bg-center opacity-20"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- About -->
+    <div>
+      <h2 class="text-2xl font-bold text-yellow-400 mb-3">About Us</h2>
+      <p class="bebas-neue-regular ">We are a team of web developers building an interactive Pokémon-themed website
+        using
+        HTML, CSS, and JavaScript. Join us as we bring the Poké-world to life through engaging UI, dynamic features, and
+        seamless user experiences</p>
+    </div>
+
+    <!-- Links -->
+    <div class="flex justify-between">
+      <div>
+        <h3 class="font-semibold text-yellow-300 mb-2">Explore</h3>
+        <ul class="bebas-neue-regular text-gray-300 space-y-1">
+          <li><a href="#" class="hover:text-yellow-400">Home</a></li>
+          <li><a href="#" class="hover:text-yellow-400">Pokédex</a></li>
+          <li><a href="#" class="hover:text-yellow-400">Battle Arena</a></li>
+          <li><a href="#" class="hover:text-yellow-400">Episodes</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Social -->
+    <div>
+      <h3 class="font-semibold text-yellow-300 mb-2"><a href="contact.html">Team Members</a></h3>
+      <div class="rubik-dirt-regular flex flex-col space-y-1">
+        <!-- Twitter -->
+        <a href="contact.html#member1" class="hover:text-yellow-400">
+          Madhu Sailesh Sasamal
+        </a>
+        <a href="contact.html#member2" class="hover:text-yellow-400">
+          Debendra Barik
+        </a>
+        <a href="contact.html#member3" class="hover:text-yellow-400">
+          Anushree Mohanty
+        </a>
+        <a href="contact.html#member4" class="hover:text-yellow-400">
+          Aurodeepa Senapati
+        </a>
+        <a href="contact.html#member5" class="hover:text-yellow-400">
+          Debasmita Raut
+        </a>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="relative z-10 border-t border-gray-800 py-4 text-center text-gray-500 text-sm">
+    © 2025 Group 6 Enigma. All rights reserved.
+    <br />
+  </div>
+</footer>
+
+
+<script src="home.js"></script>
+
+</html>
