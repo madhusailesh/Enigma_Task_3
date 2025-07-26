@@ -46,8 +46,6 @@ async function getPokemonInfo() {
     pokemonData.stats.forEach((s) => {
       stats.innerHTML += `<li><strong>${s.stat.name}:</strong> ${s.base_stat}</li>`;
     });
-
-    // description
     const descEntry = speciesData.flavor_text_entries.find(
       (entry) => entry.language.name === "en"
     );
