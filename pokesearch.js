@@ -29,14 +29,11 @@ function createbtn() {
 
 }
 
-
-
 function filterbytype(type) {
   currenttype = type;
   currentpage = 1;
   applyfilter();
 }
-
 
 async function loadpoki(range = 150) {
   for (let i = 1; i <= range; i++) {
@@ -46,7 +43,6 @@ async function loadpoki(range = 150) {
   }
   applyfilter(); 
 }
-
 
 function applyfilter() {
   const name = search.value.toLowerCase();
@@ -69,7 +65,6 @@ function loadingpokemon(selected){
     container.innerHTML = '';
     const startingrange = (currentpage - 1) * perpage;
     const numberp = selected.slice(startingrange, startingrange + perpage);
-    // count.textContent = `Showing: ${selected.length} Pokémon`;
 
     numberp.forEach(p => {
         const card = document.createElement('div');
@@ -80,9 +75,10 @@ function loadingpokemon(selected){
         card.innerHTML = `
   <div class="card-inner" >
     <div class="card-front">
-      <img src="${p.sprites.front_default}" alt="${p.name}">
+     
       <p class="heading">${p.name}</p>
       <p class="potype" style="text-transform: capitalize;">${typeText}</p>
+       <img src="${p.sprites.front_default}" alt="${p.name}">
     </div>
     <div class="card-back">
       <p><strong>Height:</strong> ${p.height / 10} m</p>
