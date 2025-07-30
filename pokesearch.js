@@ -36,6 +36,7 @@ function filterbytype(type) {
 }
 
 async function loadpoki(range = 150) {
+  currenttype = 'all'; 
   for (let i = 1; i <= range; i++) {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
     const info = await res.json();
