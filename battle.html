@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Pokémon Battle Page</title>
+    <link link
+        href="https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat:wght@400;700&family=Quicksand:wght@500;700&family=Orbitron:wght@500;700&family=Luckiest+Guy&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="stylebattle.css">
+
+</head>
+
+<body>
+    <button id="home-btn" class="home-btn">← Home</button>
+    <h1>Pokémon Battle</h1>
+    <div class="battle-container">
+        <div class="pokemon-card" id="card1">
+            <label for="pokemon1">Choose Pokémon 1:</label>
+            <select id="pokemon1"></select>
+            <div class="poke-img" id="img1"></div>
+            <!-- Display stats here -->
+            <div class="poke-stats" id="stats1"></div>
+        </div>
+        <div class="vs-holder">
+            <span class="vs">VS</span>
+            <button id="battle-btn">Battle!</button>
+        </div>
+        <div class="pokemon-card" id="card2">
+            <label for="pokemon2">Choose Pokémon 2:</label>
+            <select id="pokemon2"></select>
+            <div class="poke-img" id="img2"></div>
+            <!-- Display stats here -->
+            <div class="poke-stats" id="stats2"></div>
+        </div>
+    </div>
+    <div id="battle-result"></div>
+    <script src="scriptbattle.js"></script>
+</body>
+
+</html>

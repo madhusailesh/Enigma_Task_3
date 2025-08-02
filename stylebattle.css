@@ -1,0 +1,398 @@
+/* === Animated Gradient Background === */
+body {
+  font-family: "Bungee", "Montserrat", Arial, sans-serif;
+  background: linear-gradient(
+    -45deg,
+    #ff9999,
+    #ffcc33,
+    #66ccff,
+    #99ff99,
+    #cc99ff,
+    #ff6666
+  );
+  background-size: 600% 600%;
+  animation: gradientBG 18s ease-in-out infinite;
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  text-align: center;
+}
+
+/* Glow blur effect duplicated background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: inherit;
+  filter: blur(18px) brightness(1.07);
+  pointer-events: none;
+}
+
+/* Gradient animation keyframes */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 60%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 40%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* === Page Title === */
+h1 {
+  margin-top: 32px;
+  font-family: "Bungee", "Montserrat", Arial, sans-serif;
+  font-size: 2.6rem;
+  color: #cc0000;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 #fff, 3px 3px 3px #ffb44d75;
+}
+
+/* === Battle Container === */
+.battle-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 36px;
+  margin: 40px auto 0;
+  flex-wrap: wrap;
+}
+
+/* === Pokemon Card Styling === */
+.pokemon-card {
+  background: #fff8dfcc;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px #0001;
+  padding: 28px 24px;
+  width: 250px;
+  min-height: 250px;
+  transition: box-shadow 0.3s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-card:hover {
+  box-shadow: 0 8px 40px #ffdd9955;
+  transform: translateY(-6px) scale(1.03);
+}
+
+/* === Labels and Select Inputs === */
+label {
+  font-weight: bold;
+  font-family: "Montserrat", "Quicksand", Arial, sans-serif;
+  margin-bottom: 12px;
+}
+
+select {
+  margin: 12px 0 0 0;
+  min-width: 150px;
+  padding: 7px 10px;
+  font-size: 1.05rem;
+  border-radius: 6px;
+  border: 1px solid #ffcd38b0;
+  background: #fffbe9;
+  transition: border-color 0.3s;
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: #ff9e2e;
+}
+
+/* === Pokemon Image Container === */
+.poke-img {
+  margin: 20px 0 0 0;
+  width: 120px;
+  height: 120px;
+  background: url("https://www.serebii.net/pokedex-bw/type/normal.gif")
+    center/contain no-repeat;
+  border-radius: 50%;
+  border: 3px solid #ffe3a0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.5s;
+}
+
+/* === Stats Display Below Images === */
+.poke-stats {
+  margin-top: 14px;
+  width: 100%;
+  font-size: 1.01rem;
+  font-family: "Luckiest Guy", "Bungee", "Montserrat", Arial, sans-serif;
+  background: #fffbe9;
+  border-radius: 8px;
+  padding: 10px 0 7px 0;
+  color: #4a3500;
+  box-shadow: 0 2px 8px #f8b40022;
+  min-height: 86px;
+  text-align: center;
+}
+.poke-stats span {
+  display: block;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+.poke-stats .stat-title {
+  font-weight: bold;
+  font-size: 1.08rem;
+  color: #ff9200;
+  margin-bottom: 4px;
+}
+
+/* === VS Holder and Battle Button === */
+.vs-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 18px;
+}
+
+.vs {
+  font-size: 2.3rem;
+  color: #ff9800;
+  margin-bottom: 18px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 2px #fff, 2px 2px 2px #fec34599;
+  transition: color 0.33s;
+}
+
+button {
+  background: linear-gradient(90deg, #ffa726 30%, #fb8c00 100%);
+  color: #fff;
+  border: none;
+  padding: 13px 38px;
+  font-size: 1.14rem;
+  border-radius: 8px;
+  margin-top: 6px;
+  box-shadow: 0 2px 12px #fb8c0077;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #fb8c00 40%, #ffa726 100%);
+  transform: scale(1.08);
+}
+
+/* === Battle Result Area === */
+#battle-result {
+  margin-top: 38px;
+  font-size: 1.5rem;
+  min-height: 56px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #cc0000;
+  opacity: 0;
+  transition: opacity 0.45s;
+}
+
+/* === Animations for Shake, Winner, Loser === */
+@keyframes shake {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  15% {
+    transform: translate(-6px, 2px) rotate(-2deg);
+  }
+  30% {
+    transform: translate(5px, -2px) rotate(3deg);
+  }
+  45% {
+    transform: translate(-3px, 1px) rotate(-3deg);
+  }
+  60% {
+    transform: translate(4px, -1px) rotate(2deg);
+  }
+  75% {
+    transform: translate(-2px, 1px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+.shake {
+  animation: shake 0.7s;
+}
+
+@keyframes winner-bounce {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.23);
+  }
+  50% {
+    transform: scale(0.94);
+  }
+  75% {
+    transform: scale(1.13);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.winner {
+  animation: winner-bounce 0.8s;
+  border: 4px solid #4caf50 !important;
+}
+
+.loser {
+  filter: grayscale(60%);
+  opacity: 0.7;
+}
+
+/* === Home Button Styles === */
+.home-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: linear-gradient(90deg, #fb8c00 30%, #ffa726 100%);
+  color: #fff;
+  border: none;
+  padding: 15px 15px;
+  font-size: 0.9rem;
+  border-radius: 7px;
+  box-shadow: 0 2px 8px #fb8c0033;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 9;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.home-btn:hover {
+  background: linear-gradient(90deg, #ffa726 40%, #fb8c00 100%);
+  transform: scale(1.06);
+}
+
+/* === Responsive Design === */
+
+@media (max-width: 900px) {
+  .battle-container {
+    gap: 18px;
+  }
+  .pokemon-card {
+    min-width: 190px;
+    width: 44vw;
+    padding: 22px 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .battle-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+  .vs-holder {
+    flex-direction: row;
+    margin: 12px 0;
+    height: 48px;
+  }
+  .vs {
+    margin: 0 16px 0 0;
+    font-size: 2rem;
+  }
+  .pokemon-card {
+    width: 94vw;
+    min-width: 0;
+    max-width: 390px;
+    padding: 16px 4vw;
+  }
+  .poke-img {
+    width: 80px;
+    height: 80px;
+  }
+  #battle-result {
+    font-size: 1.17rem;
+    min-height: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-btn {
+    position: static;
+    width: 30vw; /* constrained width for visibility */
+    justify-content: center;
+    align-items: center;
+    margin: 16px auto;
+    font-size: 0.8rem;
+    display: flex; /* changed to flex for justify-content, align-items */
+    padding: 8px 8px;
+    background: linear-gradient(
+      90deg,
+      #fb8c00cc 30%,
+      #ffa726cc 100%
+    ); /* add some transparency */
+    box-shadow: none; /* reduce shadow so BG shines */
+  }
+  h1 {
+    font-size: 1.47rem;
+    margin-top: 12px;
+    color: #cc0000dd; /* slight transparency on text for layered effect */
+    text-shadow: 2px 2px 3px #fff8;
+  }
+  .battle-container {
+    margin: 16px 0 0 0;
+    gap: 12px;
+  }
+  .pokemon-card {
+    width: 96vw;
+    max-width: 99vw;
+    padding: 8vw 2vw 17vw 2vw;
+    min-height: 110px;
+    background: rgba(255, 248, 223, 0.6); /* lighter, semi-transparent BG */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* lighter shadow */
+    backdrop-filter: saturate(150%) blur(8px); /* soft blur effect to background behind card */
+  }
+  .poke-img {
+    width: 58px;
+    height: 58px;
+    border-color: rgba(255, 227, 160, 0.8); /* slightly transparent border */
+  }
+  select {
+    width: 93vw;
+    font-size: 1rem;
+    margin-top: 2px;
+    background: rgba(255, 251, 233, 0.8); /* slightly transparent */
+    border-color: #ffcd38cc;
+  }
+  .poke-stats {
+    font-size: 0.94rem;
+    padding: 7px 0;
+    margin-top: 9px;
+    background: rgba(255, 251, 233, 0.65); /* semi-transparent */
+    box-shadow: none; /* remove shadow for cleaner look */
+    color: #402d00;
+  }
+  #battle-result {
+    font-size: 1.09rem;
+    letter-spacing: 0.2px;
+    min-height: 30px;
+    color: #cc0000dd; /* semi-transparent text */
+    text-shadow: 1px 1px 2px #fff8;
+  }
+}
+
+@media (max-width: 340px) {
+  h1 {
+    font-size: 1.1rem;
+  }
+  .vs {
+    font-size: 1.15rem;
+  }
+}
