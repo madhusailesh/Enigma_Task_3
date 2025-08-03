@@ -75,12 +75,16 @@ async function checkAnswer(selectedName) {
   feedback.classList.add(isCorrect ? 'correct' : 'wrong');
 
   if (isCorrect) score++;
+
+  // Reveal image
   pokemonImage.classList.remove('silhouette');
   pokemonImage.classList.add('reveal');
   pokemonImage.style.transform = 'scale(1.2)';
 
-  
+  // Disable buttons after answer
   document.querySelectorAll('#options-container button').forEach(btn => btn.disabled = true);
+
+  // Show fun fact
   const fact = await getPokemonFunFact(currentPokemon.name);
   funFactBox.textContent = `Fun Fact: ${fact}`;
   funFactBox.classList.remove('hidden');
@@ -91,7 +95,7 @@ async function checkAnswer(selectedName) {
     } else {
       showResult();
     }
-  }, 4000);
+  }, 4000); // more time to read the fun fact
 }
 
 function showResult() {
@@ -127,5 +131,10 @@ setTimeout(() => {
   document.querySelector('.card').classList.remove('hidden');
   loadQuestion();
 }
+
+function goHome() {
+  window.location.href = "index.html"; // Or your correct home path
+}
+
 
 window.onload = startGame;
