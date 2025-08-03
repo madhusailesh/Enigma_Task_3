@@ -7,7 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
 </head>
 <body>
 
@@ -36,7 +37,16 @@
       <div class="result-title">Quiz Completed!</div>
       <div class="score" id="score"></div>
       <div class="feedback" id="final-feedback"></div>
-      <button class="btn primary" onclick="startGame()">Play Again</button>
+      <div class="button-group">
+      <button class="btn primary animated-btn" onclick="startGame()">Play Again</button>
+      <button class="btn primary animated-btn" onclick="goHome()">
+      <span class="btn-text">Back to Home</span>
+      <span class="arrow"><span class="material-symbols-outlined">
+arrow_back
+</span></span>
+    </button>
+    </div>
+
     </div>
   </div>
 
