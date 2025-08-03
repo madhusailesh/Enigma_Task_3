@@ -133,7 +133,7 @@ setTimeout(() => {
 }
 
 function goHome() {
-  window.location.href = "index.html"; // Or your correct home path
+  window.location.href = "../index.html"; // Or your correct home path
 }
 
 
