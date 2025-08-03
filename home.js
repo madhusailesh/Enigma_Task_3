@@ -12,7 +12,7 @@ menuBtn.addEventListener("click", () => {
   // bat ko X karne kelite
   if (menuOpen) {
     mobileMenu.classList.remove("max-h-0", "pt-0", "pb-0");
-    mobileMenu.classList.add("max-h-60", "pt-4", "pb-4");
+mobileMenu.classList.add("max-h-96", "pt-4", "pb-4");
 
     line1.classList.add("rotate-45", "absolute");
     line2.classList.add("opacity-0");
@@ -60,3 +60,4 @@ function closeVideo() {
   videoContainer.classList.add("hidden");
   videoContainer.querySelector("#closeVideoBtn").classList.add("hidden");
 }
+
