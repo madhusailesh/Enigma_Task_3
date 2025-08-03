@@ -72,6 +72,40 @@ document.getElementById('fetchBtn').addEventListener('click', async () => {
   }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.getElementById('pokemon-bg-video');
+  
+
+  const videoControls = document.createElement('div');
+  videoControls.className = 'video-controls';
+  
+  const toggleButton = document.createElement('button');
+  toggleButton.className = 'video-toggle';
+  toggleButton.innerHTML = '⏸️';
+  toggleButton.title = 'Toggle video playback';
+  
+
+  toggleButton.addEventListener('click', function() {
+    if (video.paused) {
+      video.play();
+      toggleButton.innerHTML = '⏸️';
+    } else {
+      video.pause();
+      toggleButton.innerHTML = '▶️';
+    }
+  });
+  
+  videoControls.appendChild(toggleButton);
+  document.body.appendChild(videoControls);
+  
+  
+  video.addEventListener('loadeddata', function() {
+    video.play().catch(function(error) {
+      console.log('Video autoplay failed:', error);
+    });
+  });
+});
+
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
